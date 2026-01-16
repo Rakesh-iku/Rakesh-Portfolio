@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <style>
+        /* ---------- Scoped Styles for Contact Page ---------- */
+        #contact-page {
+            background: #0d0d0d;
+            font-family: "Poppins", sans-serif;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 30px 0;
+        }
+
+        #contact-page .contact-box {
+            background: #1a1a1a;
+            padding: 35px;
+            width: 420px;
+            border-radius: 18px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.6);
+            position: relative;
+            animation: fadeIn 0.6s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* X Button */
+        #contact-page .close-btn {
+            position: absolute;
+            top: 12px;
+            right: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff5722;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: 0.25s ease;
+        }
+        #contact-page .close-btn:hover {
+            transform: scale(1.2);
+            color: #ff784e;
+        }
+
+        /* Heading */
+        #contact-page h2 {
+            text-align: center;
+            margin-bottom: 22px;
+            font-size: 26px;
+            color: #ff5722;
+            letter-spacing: 1px;
+        }
+
+        /* Labels and Inputs */
+        #contact-page label {
+            font-size: 14px;
+            color: #ffb199;
+        }
+
+        #contact-page input,
+        #contact-page textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            background: #242424;
+            border: 1px solid #383838;
+            border-radius: 10px;
+            color: white;
+            font-size: 15px;
+            outline: none;
+            transition: 0.25s ease;
+        }
+
+        #contact-page input:focus,
+        #contact-page textarea:focus {
+            border: 1px solid #ff5722;
+            box-shadow: 0 0 8px rgba(255, 87, 34, 0.4);
+        }
+
+        #contact-page textarea {
+            height: 110px;
+            resize: none;
+        }
+
+        /* Submit Button */
+        #contact-page .send-btn {
+            width: 100%;
+            padding: 14px;
+            background: #ff5722;
+            border: none;
+            font-size: 17px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.25s ease;
+            color: white;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        #contact-page .send-btn:hover {
+            background: #ff7043;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 87, 34, 0.4);
+        }
+    </style>
+</head>
+<body id="contact-page">
+
+    <div class="contact-box">
+
+        <!-- Close Button -->
+        <button class="close-btn" onclick="goBack()">X</button>
+
+        <!-- Contact Form -->
+        <form>
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Enter your name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Enter your email" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" placeholder="Write your message..." required></textarea>
+
+            <button type="submit" class="send-btn">Send Message</button>
+        </form>
+
+    </div>
+
+    <script>
+        function goBack() {
+            // Always redirect to index.html (portfolio page)
+            window.location.href = "index.html";
+        }
+    </script>
+
+</body>
+</html>

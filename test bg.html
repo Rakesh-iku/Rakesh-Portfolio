@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Minimal Background Animations — Demo</title>
+  <style>
+    /* Page layout */
+    html,body { height:100%; margin:0; background:#000; font-family:system-ui,Arial; color:#fff; }
+    main { min-height:200vh; /* make page scrollable to test */ padding:80px 24px; }
+
+    /* Put the background behind everything */
+    .bg-wrap {
+      position: fixed;
+      inset: 0;
+      z-index: -1;            /* behind page content */
+      pointer-events: none;   /* allows clicks & scroll through it */
+    }
+
+    /* ------------------------
+       Option A: Soft Moving Gradient (minimal, very professional)
+       ------------------------ */
+    .soft-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, #050505, #0b0b0b 40%, #0d0d0d 100%);
+      filter: blur(36px);
+      opacity: 0.6;
+      transform-origin: center;
+      animation: softMove 14s ease-in-out infinite alternate;
+    }
+    @keyframes softMove {
+      0%   { transform: translate(0,0) scale(1); }
+      50%  { transform: translate(24px,-20px) scale(1.03); }
+      100% { transform: translate(-20px,18px) scale(1); }
+    }
+
+    /* ------------------------
+       Option B: Subtle Floating Particles (very light)
+       ------------------------ */
+    #particles {
+      position: absolute;
+      inset: 0;
+      width:100%;
+      height:100%;
+      display:block;
+      mix-blend-mode: screen; /* keeps particles soft on dark bg */
+      opacity: 0.45;
+    }
+
+    /* Simple header so you can test readability */
+    header { position:sticky; top:0; background: rgba(0,0,0,0.65); backdrop-filter: blur(6px); padding:16px 24px; border-bottom:1px solid rgba(255,255,255,0.03); }
+    h1 { margin:0 0 12px 0; font-weight:600; letter-spacing:0.2px; }
+    p.small { opacity:0.8; margin:0 0 20px 0; }
+    .panel { background: rgba(255,255,255,0.03); padding:18px; border-radius:10px; max-width:760px; }
+  </style>
+</head>
+<body>
+
+  <!-- Put this at top of <body> -->
+  <div class="bg-wrap">
+    <!-- ===== CHOOSE ONE: =====
+         - To use the gradient (Option A), leave the <div class="soft-gradient"></div> active.
+         - To use particles (Option B), leave the <canvas id="particles"></canvas> active.
+         You can have both, but usually you only need one. -->
+    <div class="soft-gradient"></div>
+
+    <!-- <canvas id="particles"></canvas> -->
+  </div>
+
+  <header>
+    <div style="display:flex;gap:18px;align-items:center;">
+      <div>
+        <strong>Portfolio Demo</strong>
+        <div style="font-size:12px;color:#bbb">Minimal background animation</div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h1>Minimal & Professional Background</h1>
+    <p class="small">This demo uses a fixed background so the page content scrolls normally. The animation is gentle and won't distract from text.</p>
+
+    <div class="panel">
+      <p>Scroll down to confirm the background stays behind content and scrolling works. If you prefer the particle background instead of the gradient, uncomment the canvas tag in the background wrapper and comment out the <code>.soft-gradient</code> div (instructions above).</p>
+      <p>To integrate this into your website: paste the <code>.bg-wrap</code> block at the top of your <code>&lt;body&gt;</code> and include the CSS. If you already have a global stylesheet, move the CSS there and keep only the markup in your HTML.</p>
+    </div>
+
+    <section style="margin-top:40px;">
+      <h2>More Content</h2>
+      <p>Example content to test scroll behaviour — lots of text here so you can scroll.</p>
+      <p style="margin-top:18px; line-height:1.6;">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat, itaque.
+      </p>
+    </section>
+  </main>
+
+  <!-- ====== Particle script (Option B). Disabled by default. ======
+       If you want particles: uncomment the <canvas id="particles"> above and then uncomment the script below.
+       This script handles resizing and devicePixelRatio for crisp rendering.
+  -->
+  <!--
+  <script>
+  (function(){
+    const canvas = document.getElementById('particles');
+    if(!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    function resize() {
+      const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+      canvas.width = Math.floor(canvas.clientWidth * dpr);
+      canvas.height = Math.floor(canvas.clientHeight * dpr);
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+    }
+    window.addEventListener('resize', resize, {passive:true});
+    resize();
+
+    // Create light-weight particles
+    const N = 55;
+    const particles = [];
+    for(let i=0;i<N;i++){
+      particles.push({
+        x: Math.random()*canvas.clientWidth,
+        y: Math.random()*canvas.clientHeight,
+        r: 0.7 + Math.random()*1.4,
+        vx: (Math.random()-0.5)*0.25,
+        vy: (Math.random()-0.5)*0.25,
+        alpha: 0.35 + Math.random()*0.45
+      });
+    }
+
+    function step(){
+      ctx.clearRect(0,0,canvas.clientWidth,canvas.clientHeight);
+      for(const p of particles){
+        p.x += p.vx;
+        p.y += p.vy;
+        if(p.x < -10) p.x = canvas.clientWidth + 10;
+        if(p.x > canvas.clientWidth + 10) p.x = -10;
+        if(p.y < -10) p.y = canvas.clientHeight + 10;
+        if(p.y > canvas.clientHeight + 10) p.y = -10;
+
+        ctx.beginPath();
+        ctx.globalAlpha = p.alpha;
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+        ctx.fillStyle = 'rgba(255,255,255,0.95)';
+        ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+      requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  })();
+  </script>
+  -->
+
+</body>
+</html>
