@@ -9,56 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-
-
-    <style>
-/* IMMEDIATE MOBILE FIX FOR EDUCATION & PROJECTS */
-#education .education-card,
-#projects .education-card {
-    overflow: visible !important;
-    height: auto !important;
-    margin-bottom: 30px !important;
-}
-
-#education .education-body,
-#projects .education-body {
-    overflow: visible !important;
-    padding-bottom: 35px !important;
-}
-
-#education .education-courses,
-#projects .education-courses {
-    margin: 25px 0 !important;
-    justify-content: center !important;
-}
-
-#projects .project-link {
-    margin-top: 20px !important;
-    display: inline-flex !important;
-    align-self: center !important;
-}
-
-/* Ensure images are fully visible */
-#education .education-photo img,
-#projects .education-photo img {
-    width: 100% !important;
-    max-height: 300px !important;
-    object-fit: cover !important;
-}
-
-/* Prevent horizontal scroll */
-body {
-    overflow-x: hidden !important;
-    width: 100% !important;
-    position: relative !important;
-}
-
-/* Ensure all text is visible */
-p, li, span, div {
-    max-width: 100% !important;
-    word-break: break-word !important;
-}
-</style>
 </head>
 <body>
     <!-- Header & Navigation -->
@@ -151,14 +101,14 @@ p, li, span, div {
     </section>
 
    <!-- Education Section -->
-    <section id="education" class="education education-no-overflow ensure-visibility">
+<section id="education" class="education">
     <div class="container">
         <div class="section-title">
             <h2>Education</h2>
         </div>
         <div class="education-grid">
             <!-- Education Card 1 - VTU -->
-            <div class="education-card card-full-height force-wrap">
+            <div class="education-card">
                 <div class="education-photo">
                     <img src="sapthagiri college img.jpeg" alt="Visvesvaraya Technological University Campus" loading="lazy">
                 </div>
@@ -195,7 +145,7 @@ p, li, span, div {
             </div>
             
             <!-- Education Card 2 - Pre-University -->
-            <div class="education-card card-full-height force-wrap">
+            <div class="education-card">
                 <div class="education-photo">
                     <img src="narayan pu collge.jpeg" alt="Pre-University College Building" loading="lazy">
                 </div>
@@ -232,7 +182,7 @@ p, li, span, div {
             </div>
             
             <!-- Education Card 3 - School -->
-            <div class="education-card card-full-height force-wrap">
+            <div class="education-card">
                 <div class="education-photo">
                     <img src="st claret school1.jpg" alt="High School Building" loading="lazy">
                 </div>
@@ -283,7 +233,7 @@ p, li, span, div {
         </div>
     </section>
 
-    <section id="projects" class="projects projects-no-overflow ensure-visibility">
+    <section id="projects" class="projects">
     <div class="container">
         <div class="section-title">
             <h2>My Projects</h2>
@@ -291,7 +241,7 @@ p, li, span, div {
 
         <div class="education-grid">
             <!-- Project 1 -->
-            <div class="education-card card-full-height force-wrap">
+            <div class="education-card">
                 <div class="education-photo">
                     <img src="driver drowsiness 4.jpg" alt="Driver Drowsiness Detection" loading="lazy">
                 </div>
@@ -329,7 +279,7 @@ p, li, span, div {
             </div>
 
             <!-- Project 2 -->
-            <div class="education-card card-full-height force-wrap">
+            <div class="education-card">
                 <div class="education-photo">
                     <img src="jarvis.png" alt="Jarvis AI Assistant" loading="lazy">
                 </div>
@@ -367,7 +317,7 @@ p, li, span, div {
             </div>
 
             <!-- Project 3 -->
-            <div class="education-card card-full-height force-wrap">
+            <div class="education-card">
                 <div class="education-photo">
                     <img src="workout.jpeg" alt="Workout & Diet Planner" loading="lazy">
                 </div>
