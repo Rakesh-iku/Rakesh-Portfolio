@@ -1035,3 +1035,45 @@ footer {
     flex-grow: 1;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+section {
+  padding: 40px 15px;
+}
+
+.education-grid,
+.projects-grid,
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.education-grid > div,
+.projects-grid > div,
+.skills-grid > div {
+  flex: 1 1 300px;
+}
+
+/* For devices with max width 768px (tablets & phones) */
+@media (max-width: 768px) {
+  .education-grid {
+    flex-direction: column; /* stack items vertically */
+  }
+  nav ul {
+    flex-direction: column;
+  }
+}
